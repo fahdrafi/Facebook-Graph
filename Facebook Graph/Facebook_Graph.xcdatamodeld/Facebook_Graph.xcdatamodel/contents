@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="872" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Comment" representedClassName="Comment" parentEntity="Post">
+        <attribute name="message" optional="YES" attributeType="String"/>
+        <attribute name="user_likes" optional="YES" attributeType="String" defaultValueString="false"/>
+    </entity>
+    <entity name="Node" representedClassName="Node" isAbstract="YES">
+        <attribute name="id" attributeType="String" indexed="YES"/>
+        <attribute name="linksAvailable" attributeType="Integer 32" defaultValueString="NO"/>
+        <attribute name="thumbnail" optional="YES" attributeType="Binary"/>
+        <attribute name="updatedTime" optional="YES" attributeType="Date" defaultDateTimeInterval="-978267600" defaultValueString="1 Jan, 1970"/>
+        <attribute name="version" attributeType="Integer 32" defaultValueString="0"/>
+    </entity>
+    <entity name="Photo" representedClassName="Photo" parentEntity="Post">
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="photoData" optional="YES" attributeType="Binary"/>
+        <attribute name="picture" optional="YES" attributeType="String"/>
+        <attribute name="source" optional="YES" attributeType="String"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment"/>
+    </entity>
+    <entity name="Post" representedClassName="Post" parentEntity="Node">
+        <attribute name="from" optional="YES" attributeType="String"/>
+        <attribute name="fromID" optional="YES" attributeType="String"/>
+        <attribute name="object_id" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User"/>
+    </entity>
+    <entity name="Status" representedClassName="Status" parentEntity="Post">
+        <attribute name="message" optional="YES" attributeType="String"/>
+        <attribute name="story" optional="YES" attributeType="String"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment"/>
+    </entity>
+    <entity name="User" representedClassName="User" parentEntity="Node">
+        <attribute name="bio" optional="YES" attributeType="String"/>
+        <attribute name="first_name" optional="YES" attributeType="String"/>
+        <attribute name="gender" optional="YES" attributeType="String"/>
+        <attribute name="last_name" optional="YES" attributeType="String"/>
+        <attribute name="link" optional="YES" attributeType="String"/>
+        <attribute name="locale" optional="YES" attributeType="String"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="middle_name" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="relationship_status" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="feed" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Post"/>
+        <relationship name="home" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Post"/>
+    </entity>
+    <elements>
+        <element name="Comment" positionX="-290" positionY="222" width="128" height="120"/>
+        <element name="Node" positionX="-369" positionY="-207" width="128" height="75"/>
+        <element name="Photo" positionX="-711" positionY="153" width="128" height="135"/>
+        <element name="Post" positionX="-641" positionY="-99" width="128" height="90"/>
+        <element name="Status" positionX="-504" positionY="162" width="128" height="90"/>
+        <element name="User" positionX="-119" positionY="-99" width="128" height="195"/>
+    </elements>
+</model>
